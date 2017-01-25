@@ -157,7 +157,7 @@ void incrementByOne( int inputArr[][SIZE_OF_COL], int sizeOfRow ) {
 
 void decrementByOne( int inputArr[][SIZE_OF_COL], int sizeOfRow ) {
     for ( int i = 0; i < sizeOfRow; i++ ) {
-        int numReset = 0;  // used to reset number to 0 if gets to 10 ( L148 )
+        int numReset = 9;  // used to reset number to 0 if gets to 10 ( L148 )
         for ( int j = 0; j < sizeOfRow; j++ ) {
             int currentVal = inputArr[i][j];  // holds current value in array
             if ( ( currentVal - 1 ) % 10 == -1 ) {
@@ -170,15 +170,22 @@ void decrementByOne( int inputArr[][SIZE_OF_COL], int sizeOfRow ) {
     }
 }
 
-void transpose( int inputArr[][SIZE_OF_COL], int holder[][SIZE_OF_COL], int sizeOfRow ) {
+void transpose( int inputArr[][SIZE_OF_COL], int holder[][SIZE_OF_COL],
+                int sizeOfRow ) {
   for ( int i = 0; i < sizeOfRow; i++ ) {
       for ( int j = 0; j < sizeOfRow; j++ ) {
           holder[j][i] = inputArr[i][j];
       }
   }
+  for ( int i = 0; i < sizeOfRow; i++ ) {
+      for ( int j = 0; j < sizeOfRow; j++ ) {
+          inputArr[i][j] = holder[i][j];
+      }
+  }
 }
 
-void printArray( int inputArr[][SIZE_OF_COL], int holder[][SIZE_OF_COL], int sizeOfRow, string opp, int t ) {
+void printArray( int inputArr[][SIZE_OF_COL], int holder[][SIZE_OF_COL],
+                 int sizeOfRow, string opp, int t ) {
   if ( opp == "transpose" ) {
       cout << "Case #" << t << endl;
       for ( int i = 0; i < sizeOfRow; i++ ) {
@@ -187,6 +194,7 @@ void printArray( int inputArr[][SIZE_OF_COL], int holder[][SIZE_OF_COL], int siz
           }
           cout << endl;
       }
+      cout << endl;
   } else {
       cout << "Case #" << t << endl;
       for ( int i = 0; i < sizeOfRow; i++ ) {
@@ -195,5 +203,6 @@ void printArray( int inputArr[][SIZE_OF_COL], int holder[][SIZE_OF_COL], int siz
           }
           cout << endl;
       }
+      cout << endl;
   }
 }
